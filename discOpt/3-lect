@@ -1,0 +1,18 @@
+opt Ĉᵀx̂        → max cᵀx
+s.t. a₁̂ᵀx̂ ≤ b₁   s.t. Ax̄ ≤ b̄
+     â₂ᵀx̂ ≤ b₂         x̄ ≥ 0
+     â₃ᵀx̂ ≤ b₃   /canonical form ^
+
+max f(x̄) s.t. boc(x̄) (bunch of constraints)
+1. find bounds on f(x̄*) (x̄* - optimal x̄)
+	lower bound : find some feasible x̄ 
+	upper bound : define a minimization problem g(ȳ) s.t. g(ȳ*) ≥ f(x̄*)
+	              g(ȳ*) must be easier than f(x̄*) ⇒ Dual problem
+
+
+Dual Problem
+£££££££££££££
+Has some primal maximization problem max f(x̄), a dual problem is a 
+convex minimiziation problem min g(ȳ) s.t. f(x̄*) ≤ g(ȳ*).
+ 
+£££££££££££££
