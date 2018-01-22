@@ -1,0 +1,71 @@
+UNIX Security
+£££££££££££££££
+r(ead), w(rite), x(ecute), s(uid program)
+
+assume - the user use the same pwd on all systems
+
+rainbow table
+£££££££££££££££
+
+Auth PWDS
+###############
+Don't use regualar guesed pwds, see pwd crackers
+###############
+
+Auth Principles
+$$$$$$$$$$$$$$$
+user auth - identifier + authenticatior
+1. identification
+2. auth info
+3. transmission of info to sys
+2. verification
+
+Authenticatiors:
+- knowledge
+- possession
+- biometrics
+- location ?
+
+token (authenticators)
+tokens trades for access
+
+biometrics yield some % of false positives
+
+evil eve
+router manipulation
+replay attacks
+
+keygrabber
+
+downsides:
+- knowledge
+	* stolen?
+- possession
+	* cost?
+	* notice stolen
+- biometrics
+	* practical vs. theoretical
+$$$$$$$$$$$$$$$
+
+Access Control
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+subject - entety that can access (classes group, user, world)
+object - resources subjects can or can't access
+acccess right - ways to access an object
+
+sysadmin
+access log
+access control matrix - subjects x-axis, objects y-axis 
+often access control list is per file
+
+madatory access control
+discertionary access control
+role-based access control 
+	id user → select role → role access
+	pro: easy setup of sys
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+Mobile Malware
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
