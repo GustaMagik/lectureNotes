@@ -11,8 +11,39 @@ max f(x̄) s.t. boc(x̄) (bunch of constraints)
 
 
 Dual Problem
-£££££££££££££
 Has some primal maximization problem max f(x̄), a dual problem is a 
 convex minimiziation problem min g(ȳ) s.t. f(x̄*) ≤ g(ȳ*).
  
-£££££££££££££
+The difference g(ȳ*) - f(x̄*) : duality gap
+
+Ex: 
+max 4x₁ + x₂ + 5x₃ + 3x₄ ≤ ??
+s.t. x₁ - x₂ - x₃ + 3x₄ ≤ 1
+     5x₁ + x₂ + 3x₃ + 8x₄ ≤ 55
+     -x₁ + 2x₂ + 3x₃ - 5x₄ ≤ 3
+find: cᵀx ≤ λaᵀx (ex: in this case constraint 2, λ=2)
+
+max c̄ᵀx̄
+s.t. ā₁ᵀx̄ ≤ b₁ 
+       ...
+y₁ā₁ᵀx̄ ≤ y₁b₁
+y₁ ≥ 0
+find:
+  y₁ā₁ᵀx + y₂ā₂ᵀx + y₃ā₃ᵀx + ....
+
+find:  ȳᵀAx̄ ≥ ȳbᵀx̄
+
+Dual of a LP
+	Primal : max c̄ᵀx̄ s.t. Ax̄ ≤ b, x̄ ≥ 0, x̄ ∈ Rᴺ
+	Dual   : min bᵀy s.t. Aᵀȳ ≥ c, ȳ ≥ 0, ȳ ∈ Rᴹ
+
+weak duality for LP
+	if there exists a feasible x̄ in P and a feasible ȳ in D, then cᵀx̄ ≤ bᵀȳ
+	Ax ≤ b → vᵀAx ≤ vᵀb : v ≥ 0
+	c ≤ Aᵀy → cᵀ ≤ (Aᵀy)ᵀ → cᵀ ≤ yᵀA → cᵀw ≤ yᵀAw : w ≥ 0
+	then y = v and x = w → yᵀAx ≤ yᵀb  & cᵀx ≤ yᵀAx → cᵀx ≤ yᵀAx ≤ yᵀb
+
+strong duality for LP
+	if P has x* then D has y* and cᵀx* = y*ᵀAx* = bᵀy*. i.e. duality gap = 0.
+	if P is unbounded then D is infeasible, and vice versa
+	if one is infeasible the other is either infeasible or unbounded
