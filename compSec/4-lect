@@ -1,0 +1,46 @@
+Malware
+££££££££££££
+With malicious intent
+
+Virus 
+- Embedded in code
+- Boot Sector
+- Document (macro virus)
+- Stealth 
+- Polymorphic (chaning it's appearence)
+- Hoax (no virus just email with bogus warning)
+- Rabbit
+- Worm (does something you want + extra)
+- Social engineering
+- loguc bmob
+- time bomb
+- trap/back door
+- salami attack (small economic gain per attack)
+
+hardware tempering
+drive-by downloads
+java-script introduces alot of webbrowser exploits
+
+phases of virus
+1. dormancy
+2. propagation
+3. triggering
+4. attack
+£££££££££££££
+
+Love Letter
+- email/irc replication
+- file that was exe but was masked as txt
+- social engineering
+1. Replicate
+2. Password stealing
+3. Email/IRC spread
+
+The Morris Worm
+- doors left unlocked
+- leed to cert
+- built on trust relations
+
+Advanced malware
+
+Buffer overflow 

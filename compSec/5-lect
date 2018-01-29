@@ -1,0 +1,36 @@
+Blockchain
+%%%%%%%%%%%%
+Sender → block → broadcast → be approved by all → add to chain/record → Reciever
+
+Majority shows validity
+
+Platform
+////////////
+1. Block Struct
+2. Block Hash
+3. Gen a Block
+4. Store the block
+5. check integrity of block
+6. Choose longest chain
+7. Control the Nodes 
+////////////
+
+IBM Hyperledger Fabric sdk Go
+
+Smart Contract (Ethereum)
+%%%%%%%%%%%%
+
+Buffer Overflow
+$$$$$$$$$$
+Write over return to addresses with executable code
+that in some steps give you control of the system
+
+Typical injection vector
+	NOP-sled | shellcode | address of shellcode 
+You begin with a lot of subsequent nop operations
+then you only have to hit one of the nops to get to your shellcode :)
+Usually packed to avoid having '\0' read of as end of string
+
+
+
+$$$$$$$$$$
