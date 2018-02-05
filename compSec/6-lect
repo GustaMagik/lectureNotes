@@ -1,0 +1,8 @@
+Buffer overflow countermeasures
+%%%%%%%%%%
+Canaries 
+A value inserted after the return addres and frame pointer, checked inbefor returning via the return address. if altered crash program. The canary is spawned by the compiler.
+
+
+
+%%%%%%%%%%

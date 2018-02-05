@@ -1,0 +1,25 @@
+Magic square
+when minimizing flip equality
+when maximizing have the same direction
+
+0≤x A ≥c
+0≤y A ≤b
+
+c₁x₁+c₂x₂≤y₁a₁+y₂a₂≤y₁b₁+y₂b₂
+max      duality gap      min
+
+a dual is a problem that gives you and bound on the problem (upper for max, lower for min)
+-----------------------------
+Max flow - min cut
+
+min cut
+set s:0 t:1 find along each path s→t the edge with lowest capacity. Minimization of edgevariables times their capacity. Either select an edge or not, see lect notes (0's in one set, 1's in the other)
+
+Max-flow ⟺ Min-cut due to strong duality because of totally unimodular (TUM).
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+Recap
+---------
+General Dual    
+max cᵀx      dual  min bᵀy
+s.t. Ax≤b          s.t. Aᵀy ≥ c
+      x≥0               y ≥ 0
+
+_____________________ Write up A
+        a₁₁ a₁₂ a₁₃ 
+        a₂₁ a₂₂ a₂₃ 
+        a₃₁ a₃₂ a₃₃ 
+
+_______________________ x and b with inequalities
+        0       0
+        ≥       ≤
+        x₁  x₂  x₃  
+        a₁₁ a₁₂ a₁₃ ≤ b₁
+        a₂₁ a₂₂ a₂₃ = b₂
+        a₃₁ a₃₂ a₃₃ ≥ b₃
+
+________________________ y and c
+        0       0
+        ≥       ≤
+        x₁  x₂  x₃  
+    y₁  a₁₁ a₁₂ a₁₃ ≤ b₁
+    y₂  a₂₁ a₂₂ a₂₃ = b₂
+    y₁  a₃₁ a₃₂ a₃₃ ≥ b₃
+
+        c₁  c₂  c₃
+_______________________ y's are constrained by the coresponding b's. if ≤ then y ≥ 0, ≥ → y ≤ 0, = → no constraint. Same process but in reverse goes for c's with x's.
+        0       0
+        ≥       ≤
+        x₁  x₂  x₃  
+0 ≤ y₁  a₁₁ a₁₂ a₁₃ ≤ b₁
+    y₂  a₂₁ a₂₂ a₂₃ = b₂
+0 ≥ y₁  a₃₁ a₃₂ a₃₃ ≥ b₃
+        ≥   =   ≤
+        c₁  c₂  c₃
+-----------------------------
+
+Easy ILP
+$$$$$$$$$$$$$$$
+- LP has integer optimum
+- All vertecies are integer
+- All intersections are integer
+
+Sx = b : x∈Z
+
+Unimodular matrix 
+- An integer matrix S is called unimodular iff det S = ± 1
+- A unimodular matrix S has integer solution for all b
+
+Sx = b
+→ x = S⁻¹b
+Cramer's rule:
+	x₁ = det Sᵢ/det S  
+	Sᵢ = S with i-th column replaced by b
+	⇒ det S = ± 1
+	Let bᵢ = ∅, except bᵢ[t] = 1
+		x = S⁻¹bₜ
+		x is the t-th column of S⁻¹
+		⇒ all columns of S⁻¹ integer
+		det S⁻¹ integer ⇒ det (S)⁻¹ integer
+		det(S)/det(S)=det(S)*(det(S⁻¹)) = 1 ⇒ det S = det S⁻¹ = ± 1
+
+A matrix M is called totally unimodular (TUM) if every invertible submatrix are unimodular. (i.e. each set of constraints either have to be unimodular or have determinant 0 (e.g. parrallell constraints))
+Another way to put it is for each submatrix K : det K ∈ {±1, 0}. Hence they only contain 0,1,-1 in the matrix.
+$$$$$$$$$$$$$$$
+
+Strong integer duality
+££££££££££££££
+Max-flow ⟺ Min-cut
+
+incidentce matrix
+  sv st vt ts
+s 1  1   0 -1
+v -1 0   1  0
+t  0 -1  -1 1
+
+ILP max xₜₛ   : xᵢⱼ := flow along edge i→j
+    capacity constraints
+    xₛᵥ ≤ 3
+    xᵥₜ ≤ 1
+    xₛₜ ≤ 2
+    xₜₛ ≤ ∞
+    flow balance constraints
+    xₛᵥ + xₛₜ - xₜₛ = 0 
+    xᵥₜ - sₛᵥ = 0 
+    xₜₛ - xₛₜ - xᵥₜ = 0
+
+matrix cheat:
+
+     xₛᵥxₛₜxᵥₜxₜₛ 
+  yₛ   1  1  0 -1 = 0
+  yᵥ  -1  0  1  0 = 0
+  yₜ   0 -1 -1  1 = 0
+0≤yₛᵥ  1  0  0  0 ≤ 3
+0≤yₛₜ  0  1  0  0 ≤ 2
+0≤yᵥₜ  0  0  1  0 ≤ 1
+0≤yₜₛ  0  0  0  1 ≤ ∞ - has slack hence has to be 0
+       ≥  ≥  ≥  ≥
+       0  0  0  1
+££££££££££££££

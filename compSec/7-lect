@@ -1,0 +1,68 @@
+Cryptography
+¥¥¥¥¥¥¥¥¥¥¥¥
+Terminolog
+- Non-Repudiation
+- Cryptology
+- Cryptography
+  + Encryption
+  + Decryption
+  + Plain/Clear
+  + Ciphertext
+  + Key
+- Crypanalysis
+  + Reverse engineering
+
+Symmetric key
+- Shared key
+- secure channel, obide C.I.A., might be:
+  + slow
+  + expensive
+  + exisiting only at one point in time
+- Cryptanalyst
+  + assumption: knows all but key
+  + attack types
+    * chipertext only
+    * known-plaintext
+    * chosen-plaintext/chosen-chipertext
+  + Theoretical
+    * unlimited time
+    * successfull analysis leads to only 1 message decrypted
+- Diffusion, change; symbol plain → many chiper, key → much chiper
+- Confusion, scheme provides a chiper that is resilient to statistical analysis
+- DES → 3DES (don't use)
+- AES /Rijndael
+- Key lengths
+  + computational complexity
+- One-time pad 
+  + rng string used only once as key
+  + problem the secure channel: send the key, could send message instead
+  + repeated usage of key → no security
+
+"In general, a symmetric key chiper is secure if no method is less expensive than bruteforce"
+
+Asymmetric
+- Slower encryption
+- Usage: setup secure channel
+- 2 key, must prove authenticity
+- One way fnc
+- signature, no confidentiallity, but authentication
+- sign → crypt → transmitt → decrypt → verify
+- Diffie-Hellman
+- Rivest-Shamir-Aldeman
+  + Break: 
+    * Algos
+    * Computational efficiency
+  + GNUPG - lab
+    * plain → crypt msg with sess-key → pack → send  
+              crypt session key       →  ^
+
+Signatures
+
+Problems
+- Key Management
+- Key escrow
+- Trust
+- Certificates
+
+Future
+¥¥¥¥¥¥¥¥¥¥¥¥
