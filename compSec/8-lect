@@ -1,0 +1,52 @@
+Cryptography
+$$$$$$$$$$$$$
+symmetric: Secure channel: conf + auth
+asymmetric: auth channel (for pub key)
+non-repudiation: a third party should be able to validate a transaction
+
+Certificates: used for authetication (hierarchical trust)
+
+Key Escrow
+- Third party access to data on a machine without the knowledge of the owner.
+- Risks
+- Moral
+
+ECB
+
+Side Channel
+- Hack on physical systems
+- Types
+  + timing
+  + power monitoring
+  + electromagnetic
+  + aucustic
+  + introduce faults
+
+Information Hiding
+- covert channel 
+  + leak info from protected area to unprotected area of a system
+  + slow
+  + can be used to relay info to a spy program if the channel is compromised, by performing system actions which can be interperted as information by the spy program (on/off → 0/1)
+  + storage channels
+  + timing channels
+- steganography
+  + hiding things in other things
+- digital watermarking
+  + "hidden" number, used for copyrights/access control
+  + does not affect quality of content
+
+Databases
+- SQL injection
+- Netflix challenge
+  + better recommendations
+  + in 16 days there were claims of people knowing id of users, using other sources to match the info with like imdb
+- small set of anonymus data + statistics → high likelyhood of knowing the user
+- Differential privacy
+- Setup needs experience
+- what is sensitive data (in what kind)
+- who can access what data
+
+
+
+
+
