@@ -1,0 +1,28 @@
+Databases
+- inference
+  + netflix challenge
+  + statistical interference attacks
+    * query size restriction, if there are too few in a group, don't display stats. 
+    * attack, ask questions that gives complementary sets and do the math to find what you want
+    * query set overlap control
+    * only allow searches on whole database
+- differential privacy
+  + add noice to the output s.t. the adversary can not determine the missing value
+  + the choose of function affect how private the data becomes and how much truth you can find in it.
+- GDPR
+DDoS
+- syn flood
+  + syn spoofing atk, fill half-open connections table, none can connect
+- udp flood
+- crash/kill
+  + zombies, attacker uses botnet with handlers and agents to "wash" the attacker.
+  + ping of death
+  + land attack
+- reflection/amplification-based
+  + use services for amplification (ex. 1pkg→10pgk req→ret)
+  + re-direct to target
+- defence
+  + attack prevention/preemtion
+  + attack detection/filtering
+  + attack source traceback
+  + attack reaction (post-atk)
