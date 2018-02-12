@@ -1,0 +1,44 @@
+recap
+/////////
+totally unimodular matrix
+- subMatrix det = {1,0,-1}
+incident matrix
+duals
+/////////
+
+Vertex Cover
+- Heuristic (naïve)
+  + greedy: sort by falling # neighbors, pick maximal, rinse and repeat
+  + approx ratio
+    min ∑xᵢ xᵢ∈{0,1}
+    cost of edge incident to v: 1/deg(v)
+    cost of eⱼ in iteration k ≤ f*/m-j+1
+    total cost ≤ ∑f*/m-j+1=∑f*/j = harmonic ⇒ O(log m) ∈ O(log (n²)) = O(log(n))
+  + pidgeon hole lemma set partiotion m items in n blocks: m/n round up 
+- primal-dual method (LP)
+  primal min  cᵀx
+         s.t. Ax ≥ b
+               x ≥ 0
+  dual   max  bᵀy
+         s.t. Aᵀy ≤ c
+                y ≥ 0
+  quantify comp slack violation
+  "Restricted primal" ↓
+    ⊥ = {i | yᵢ=0}
+    J = {j | ∑aᵢⱼyᵢ=cᵢ}
+    ∀i∈⊥  : ∑aᵢⱼxⱼ≥bᵢ
+    ∀i∈⊥ᶜ : ∑aᵢⱼxⱼ-sᵢ=bᵢ
+    min  ∑sᵢ + ∑xⱼ | i ∈ ⊥ᶜ, j ∈ Jᶜ
+    s.t. s ≥ 0
+         x ≥ 0  
+
+- primal-dual method (ILP)
+  + constant factor approx
+
+A reduce to B (B harder than A, solving B solves A)
+
+complementary slackness, either primal var = 0 or dual constraint is bidning (& vice versa)
+
+solvers:
+- simplex
+- convex
