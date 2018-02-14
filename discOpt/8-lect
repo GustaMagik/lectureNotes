@@ -1,0 +1,34 @@
+adjacency matrix
+----------------
+relation node to node
+
+incidence matrix
+----------------
+relation node to edge
+out of node: 1
+in to node: -1
+no relation: 0
+loops: 0
+TUM
+
+graphs
+------
+tree: no cycles
+forest: multiple disjoint trees
+bipartite
+tournament
+
+maximal - local/cant add more
+maximum - global
+
+matching: set of edges s.t. no 2 edges are adjacent
+mst: with weighted edges get minimum value 
+
+bridges of königsberg
+- no euler path 
+- river Pregel
+
+Euler Path: round trip using every edge once
+Hamilton cycle: round trip using each node once
+TSP: 
+Directed Asyclic Graph: (used in shortest path algos)
