@@ -32,3 +32,31 @@ Euler Path: round trip using every edge once
 Hamilton cycle: round trip using each node once
 TSP: 
 Directed Asyclic Graph: (used in shortest path algos)
+€€€€€€€€€€€€€€€€€
+Primal-Dual Method
+1. Some feasible dual solution y
+2. "Force primal closer to optimum" : find some x which minimizes complementary slackness violations with y, using the restricted primal
+	Restricted Primal
+	a. minimize slack for primal non-binding constraints where dual variables are not zero. ∀i∈⊥ᶜ ∑aᵢⱼxⱼ-sᵢ=bᵢ ⊥∈{i|y}
+	b. minimize primal variables where the dual constraints are non-binding
+
+	min ∑ sᵢ + ∑xⱼ : i∈⊥ᶜ, j∈Jᶜ, J∈{j|∑aᵢⱼyᵢ=cⱼ}
+3. Id solution to RP is 0 x,y, are optimal since CS holds, else find a better y in terms of the dual
+Idea: bᵀy < bᵀy+εbᵀζ : εbᵗζ > 0, y+εζ feasible dual solution
+
+⊥ = {i | yᵢ = 0}
+J = {j | ∑aᵢⱼyᵢ = cⱼ}
+restricted primal: min  ∑sᵢ + ∑xⱼ : i∈⊥ᶜ, j∈Jᶜ
+                   s.t. ∀i∈⊥: ∑aᵢⱼxⱼ≥bᵢ
+                        ∀i∈⊥ᶜ: ∑aᵢⱼxⱼ-sᵢ=bᵢ
+
+I |   |  |
+Iᶜ|___|̣__|
+   J Jᶜ
+
+dual 
+max  bᵀy
+s.t. ∀j∈J : ∑aᵢⱼζᵢ≤0
+     ∀j∈Jᶜ: ∑aᵢⱼζᵢ≤1
+     ∀i∈I : ζᵢ≥0
+     ∀i∈Iᶜ: ζᵢ≥-1
