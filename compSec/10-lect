@@ -1,0 +1,91 @@
+Network Security
+%%%%%%%%%%%%%%%%
+C & I in CIA is very important for networking
+
+net is insecure medium
+unknown path over network
+anonymity (tor, etc)
+
+Port scanning variant: stealth scanning (hidden that you scan)
+
+IP/ARP/WEB/DNS Spoofing
+- IP exploits trust
+  + DOS trusted host
+  + impersonate that host
+- WEB site look-alike
+  + fool users onto fake sites (they trust)
+- DNS directing users to fake servers that hand out fake sites
+  + DNS poisoning
+- ARP LAN atk that uses a PC on the network to try and steal incoming trafic
+
+MIM
+- ARP poisoning
+- ICMP redirection
+- DNS poisoning
+- Web spoofing
+%%%%%%%%%%%%%%%%
+
+Firewalls
+&&&&&&&&&&&&&&&&
+Access control device between 2 nets
+Filters outgoing and incoming msgs
+Stance: default firewall policy (deny/permit)
+Layers
+- packet filter
+  + checks every packet, decides (accept/deny)
+  + uses: src ip, src port, dest ip, dest port, of pkgs
+- application-level gateway(proxy)
+- circuit-level gateway
+- stateful inspection
+  + checks chains of packets, builds flows
+
+DMZ (Demilitarized zone) 
+- separate network into parts 
+- different levels of access in parts
+
+Protects you from the outside
+Does not protect form 
+- insiders 
+- viruses
+- data-driven attacks
+Open for availability atks
+
+problems
+- needs maintainance
+- difficult to test
+- installation is difficult to do correctly
+
+VPNs
+- does not protect the PCs outside the firewall they can then infect the network via allowed traffic
+&&&&&&&&&&&&&&&&
+
+Kerberos
+££££££££££££££££
+Network protocol
+Auth system
+- Secure, against eve
+- reliable
+- transparent (to user)
+- scalable
+pwds
+- stored in kerberos (auth server)
+- never sent over net
+
+ticket granting service
+- auth user
+
+ login once per session
+1. user sends ID to auth server
+2. auth server gives back auth ticket (encrypted)
+3. auth tick sent to TGS
+4. TGS gives user service ticket
+5. service ticket used to use service
+
+clock sync is important for security in kerberos
+
+the protocol is considered to be secure
+however the implementations of kerberos have 
+and have had issues due to coding errors
+
+TimeOfCheckTimeOfUse - race conditions
+££££££££££££££££
