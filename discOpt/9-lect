@@ -1,0 +1,25 @@
+TSP
+%%%%%%%%%%%
+minimum weight hamiltonian cycle
+- it is NPC to decide if a graph is hamiltonian
+Euclidian TPS
+- d(u,v)=‖u-v‖₂
+- without skipping the cost would be 2*MST total cost
+- with skipping MST≤c≤2*MST
+- 2 approx
+
+Theorem:
+Unless P=NP there exists no polytime α-approximation for TSP for any α≥1.
+%%%%%%%%%%%%%
+
+Relaxed PCS
+At least one of
+- xⱼ=0
+- cⱼ/α≤∑aᵢⱼyᵢ≤cⱼ
+
+Relaxed DCS
+At least one of
+- xⱼ=0
+- βbᵢ≤∑aᵢⱼxⱼ≤bᵢ
+
+
