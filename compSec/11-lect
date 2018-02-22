@@ -1,0 +1,29 @@
+IntrusionDetectionSystem
+- Anomaly-based : rules for what is normal, alarm otherwise 
+  + more interesting today
+- Missuse : rules for what is missuse
+- Network IDS
+  + general application
+- Host IDS
+  + specific
+- Problems
+  + ML has class imbalance (normal vs. threat)
+  + false alarms
+  + portability (needs to be tailored)
+  + test methods (weak)
+  + scalability (NIDS, bottle neck)
+  + privacy conserns (logging incoming data)
+Future
+- "Intrusion Prevension Systems"
+  + when detecting things, take action (change firewall, drop connection etc)
+- problems
+  + increasing net-traffic + speed = problem analysing
+  + encryption
+- posibilities
+  + tolerance
+  + ex. FRS
+
+Honeypots
+- Decoy
+- Collect atk info
+- steal atk time
