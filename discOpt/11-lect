@@ -1,0 +1,42 @@
+..Cutting plane method.. -- works for general convex sets
+LP - Minimize list of constraints
+- find a violated constraint
+- add it
+- repeat
+- stop when you have no violated constriants
+
+finding the planes : separation problem
+
+inner SEC - any subset mustn't contain cycles 
+outer SEC - the sum of edge variables between two sets less than 2
+
+For TSP the separation problem is min-cut → polytime
+
+LP-relaxations, can become arbitrarily bad
+
+convex hull - convex set defined by the outmost nodes of the set
+
+..Held-Karp bound/Lagrangian relaxation..
+min cᵀx
+s.t.
+A₁x ≥ b₁ - hard ← penalize violation
+A₂x ≥ b₂ - easy
+     ↓
+min cᵀx + λᵀ(b₁-A₁x) → Lagrange dual selects best λ
+s.t.
+A₂x ≥ b₂
+λ ≥ 0
+lagrange ⇒ at least as good as LP relaxation  
+
+held-karp bound for TSP
+1-tree bound 
+ c(e) + c(f) + c(p) 
+ A ≤ c(e)+c(f) - A : pick the 2 smallest paths
+ B ≤ c(p)      - B : MST(G\v) - v : G graph, v node connected to edges e and f.
+
+want to change edge weights 
+s.t. 
+- all hamilton cycles change by the same know amount
+- MST becomes "most path-like"
+
+Schwartzwald-Gomory cuts
