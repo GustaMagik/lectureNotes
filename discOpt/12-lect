@@ -1,0 +1,51 @@
+--legrange relax--
+
+
+--held-karp bound--
+one-tree bound
+for a/each node, add a weight x to all of it's edges
+(it will increase each hamilton cycle by the same amount)
+
+For G = (V,E) with edge costs c(e) let λᵥᵢ 
+be a constant for node vᵢ. 
+Let G' be a graph with edge weights c(e')=c(e)-λᵤ-λᵥ 
+for e=(u,v). 
+Then the Held-Karp bound is C+2∑λᵥ  
+
+easy → DC: ∑xₑ=2
+hard → SEC
+
+min cᵀx + ∑λᵥ(∑xₑ-2) ← lagrange relaxation
+s.t. λᵥ = 0
+	 ∑xₑ = w
+	 v̂ : ∑xₑ = 2
+	 SEC
+
+we have n-1 nodes in G-v̂
+select n-2 edges in G-v̂
+
+G' ← any cut ≥ 1 edge ⇒ connected (SEC)
+SEC also : no subtours in G'
+
+cᵀx - ∑λᵥ(∑xₑ-2)
+cᵀx - ∑λᵥ∑xₑ + 2∑λᵥ - (middle term) each edges picked twice, each node once, replacable by ∑(λᵤxₑ+λᵥ+xₑ)
+	↓
+min 2∑λᵥ + ∑(c(e)-λᵤ-λᵥ)xₑ
+
+--Branch-and-bound--
+divide set in 2 parts
+determine what half could contain OPT
+throw away other half and repeat
+
+do this by:
+find a feasible solution (f)
+divide
+compare lower/upper bound to f 
+if not better than f throw away
+repeat
+
+find a bound via a relaxation, round down and up, those bounds can divide the set
+
+no general recepie, a bound, a tree search/divide algo
+
+branch-and-cut, improves the solving of some problems
