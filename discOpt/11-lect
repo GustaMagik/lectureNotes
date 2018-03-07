@@ -39,4 +39,4 @@ s.t.
 - all hamilton cycles change by the same know amount
 - MST becomes "most path-like"
 
-Schwartzwald-Gomory cuts
+Chvatal-Gomory cuts
