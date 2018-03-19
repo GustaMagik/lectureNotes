@@ -1,0 +1,91 @@
+Language-Based Security
+XSS
+SQL-injection
+Information flow control
+
+Chalmers security specicalization
+http://www.cse.chalmers.se/edu/master/secspec/
+
+Labs
+- ToCToU
+- r00tshell
+- WebAppSec (SQL inj + XSS)
+
+Project
+
+Guest lectures
+- FB London, Ioannis [web sec and priv at FB]
+- Steven Van Acker [Adv web sec]
+
+OWASP Goth (Lindholmen) Tuesday 27th march
+
+---------------------------------------------
+
+Least Privilege
+- OS eforces sec @ system call layer (course-grained control)
+- Applications can enforce fine-grained control
+  + track who did what when, use for controlling
+
+Principle of Security Design
+- Strive for small Trusted Computing Base
+- Easier to check/ensure correctness of a small TCB
+
+Melissa - Macro virus
+- Solution needs to prevent bad actions by code without making the good actions go away.
+
+
+Enforce same origin policy
+- XSS atk can still extract info
+
+Defence against malic code
+- Analyze
+- Rewrite
+- Monitor
+- Audit
+
+Concepts for lang based security
+--------------------------------
+Static certification (type systems)
+- code producer → {code} code consumer (analyze → reject/deploy)
+
+Proof-carrying code
+- code producer (produce + analyze) → {code + proof} → code consumer (verify → (reject/deploy))
+
+Software-based reference monitors
+- code producer → {code} → code consumer (add policy specific monitoring code → deploy + monitor)
+---------------------------------
+
+#1 Secure the weakest link
+Id weakest link (usually not crypto), may not be code, might be social/behavioural based
+
+#2 Practice Defense in Depth
+- Multiple layers of security
+- ex: CSP policies + secure code on webpage
+
+#3 Fail Securely
+- Dont give away info when the system fail
+
+#4 Principle of Least Privilege
+
+#5 Compartmentalize
+- Separate system so that breach of one part does not give away the whole system.
+- Separation of duty
+
+#6 Keep it Simple
+- Complexity introduces bugs
+- Failsafe defaults
+
+#7 Promote Privacy
+- GDPR
+
+#8 Hiding Secrets is Hard
+- Minimize number of secrets in the system
+
+#9 Be reluctant to trust
+- Small TCB = Better
+- Trust is transitive
+
+#10 Use Community Resources
+- Dont make your own crypto and use it
+- Use resources out there
+- Enlist help from the community to audit  
