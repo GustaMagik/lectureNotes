@@ -1,0 +1,37 @@
+Vectors for atk and protection related to network level security
+
+Cover all cases, allways
+
+Lab 
+- 1 NMAP
+- 2 Firewall setup
+- 3 SSL/TLS
+- 4 Snort, IDS config
+
+-----
+Security
+- CIA 
+- Privacy
+- Availability
+- Reliability
+- Maintinability
+- Accountability
+- Traceablilty
+- Authenticity (Non-repudiation)
+
+Security by obsucrity, NA good
+
+Networks in cars
+- FlexRay
+- CAN
+- LIN
+
+Protocol secutiry is paramount to limiting the attack surface
+
+OSI model, all protocols at all levels need securing/thought for potential atk surface when designing secure systems
+
+Encryption ≠ intgrity protection
+
+MITM
+
+
