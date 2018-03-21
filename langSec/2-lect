@@ -1,0 +1,82 @@
+Cambridge Analytica
+
+Information Flow Security
+#############
+origin-based restrictions
++ often to restrictive
++ when relaxed, can be used to "free" data via this channel
+
+I-Flow control should achieve, rigid structure that ensures that no secret data is allowed to flow out of the system.
+
+Good stuff that does not solve all problems:
+- Access control
+  + prevents unauthorized release
+  - Which process should be included?
+- Firewalls
+  + permit selected comm
+  - that comm can be harmfull (no knowledge of content of comm)
+- Encryption
+  + secures comm channel
+  - endpoints weakest point
+- Antivirus scanning
+  + rejects black list
+  - does not prevent new atks
+- Digital signatures
+  + help id code
+  - must trust authority
+- Sandboxing/OS-based monitoring
+  + good for low level stuff
+  - program is still a black box
+
+Looking inside the black box is very important
+- Semantics-based security specification
+- Static security analysis
+
+Dyn Sec Enforcement
+
+Java's snadbox, monitoring, and MAC dyn enforce sec policies but have to monitor all execution paths
+
+explicit flow - assignment from secret to pub vars
+implicit flow - branching on secrets results in pub var changes
+
+-----------
+Secuity-type system rules
+&&&&&&&&&&&&&&&
+exp : high
+
+h ∉ Vars(exp)
+-------------
+exp : low
+
+[pc] ⊢ skip          - pc is the context
+
+[pc] ⊢ h:=exp
+
+exp : low
+----------------
+[low] ⊢ l := exp
+
+[high] ⊢ C
+----------
+[low] ⊢ C
+
+[pc] ⊢ C₁ [pc] ⊢ C₂
+-------------------
+[pc] ⊢ C₁;C₂
+
+exp:c [pc] ⊢ C₁ [pc] ⊢ C₂
+-----------------------------
+[pc] ⊢ if exp then C₁ else C₂
+
+exp:pc [pc] ⊢ C
+---------------------
+[pc] ⊢ while exp do C
+&&&&&&&&&&&&&&&&&
+Type soundness
+[pc] ⊢ C ⇒ C is secure
+
+noninterference
+- a program is secure iff high inputs do not interfere with the low-level view of the system
+
+indistinguishability
+  m₁ ≈ₗ m₂ iff m₁ ≠ ⊥ ≠ m₂ ⇒ m₁ =ₗ m₂
