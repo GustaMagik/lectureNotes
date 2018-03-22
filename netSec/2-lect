@@ -1,0 +1,84 @@
+Network layer security
+-------------------
+IPv4 format
+[bit 0 → bit 31]
+version (4) :: header len(4) :: QoS (8) :: Total len (16)
+fragment id (16) :: flags(DontFragment, MF) :: fragment offset(13)
+time to live(8) :: protocol (8) :: Header checksum (16)
+source IP (32)
+dest IP (32)
+options if any :: padding
+data
+
+IP spoof ⇒ never rely on IP address for security purposes
+What happens if header length has the value < 20 bytes?
+- depends on the hosts way to deal with incoming packs, some doesnt drop the pack
+What if datageam len differs from actual length
+- actual > header specified → buffer overrun
+- actual < specified → reuse old data in buffer, might be sent back etc.
+
+Networks should do ingress and gress filtering
+- check all in/out comm to see that addresses are ok
+Should drop
+- broadcast addr as dest
+- multicasta ddress as source
+- unassigned addresses
+
+- {0/0} & {0/host}
+- {-1/-1} drop if source (broadcast)
+- {ourNW/-1} drop
+- {ourNW/-1} invalid if source
+- {127/*}  
+
+IP fragmentation problems
+- teardrop
+- new teardrop
+- boink
+
+teardrop
+- jack in a box, overlapping
+- worked pga linux optimization, dont read allready read data → copy alot of data
+
+boink
+- extend fragmented data outside of the expected size
+- leeds to long wait for no more pack → bufferspace exhausted
+
+in all cases of IP fragmentation probs, the reassembly of the data can go very wrong.
+
+Ping-o-death
+- huge offset + accepted datasize → outside datagram size → crash
+- implementation specific protocol ICMP
+
+Fragment id should be unique per {source,dest,prot}
+- some systems inc ID for each pck sent (leak info about transmission rate)
+- idle
+
+older linux and solaris - id unique per ip address pair
+
+OpenBSD - ranom number ID
+- collisions can occur
+
+Idle scanning
+
+IP options problems
+- LSR and SSR should never be allowed
+  + can be used to reach unreachable systems
+  + avoid firewalls/IDS systems
+
+TTL field and ICMP
+traceroute
+ping
+firewalking (ICMP echo reply as tracerout msg can break through FW)
+- firewall shouldn't forward internal time exceeded replies to the outside
+- firewalls should be stateful
+
+Drop more ICMP msgs?
+- Many are usefull, some are usable for attackers
+- Destination unreachable leaks info about what is the error and if the msg is to long for the router/system on the path (fragmentation needed)
+Path MTU discovery
+- Source Quench, good to have but abusable for thtottling a users bandwidth
+- Redirect
+
+OpenBSD and NetBSD (good implementations)
+- Initial PMTU
+- Path MTU update 
