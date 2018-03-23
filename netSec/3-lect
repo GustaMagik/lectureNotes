@@ -1,0 +1,137 @@
+Transport Layer Security
+
+UDP
+-----------
+Source Port (16) :: Dest Port (16)
+UDP Len (16) :: UDP Checksum (16)
+data ...
+-----------
+Problems:
+- Spoof (IP source, Port number)
+- Easy to insert UDP datagrams into a stream
+Note: Unix, must be root to set up a server using port no < 1024
+
+Port scanning (TCP and UDP)
+- UDP 
+  + 65535 ports
+  + scan subset of 2000 well-known services
+  + try specifics
+  + 0 byte datagram ⇒ ICMP unreachable for all non-running services
+- TCP
+  + Testing all machines on a subnet to find ⇒ many searches, easier to find and block by IDS
+
+OS has security mechanisms that limits the number of ICMP msgs/second
+
+TCP
+-----------
+Source port (16) :: Dest port (16)
+Sequence num (32)
+ACK number (32)
+Header lenght (4) :: Reserved (6) :: Flags(URG::ACK::PSH::RST::SYN::FIN) :: Window size (16)
+TCP Checksum (16) :: Urgent pointer (16)
+Options :: Padding
+Data ...
+-----------
+TCP port scanning (SYN scan)
+Problems
+- RFC793 : Traffic to a port; closed → RST, open → SYN/ACK
+Protection
+- >> netstat (WDOS)
+- nmap immediately sends RST as reply to SYN/ACK
+- Third party loggers can expose problems
+
+Scanning is a noisy process:
+idea: scan multiple PC but different ports for each → put the pieces together to get a picture of what the preconfigured PC runs for services (assume many PC's similar setup).
+
+TCP ACK scanning
+- works through non-statefull FW's
+- responses may leak info
+
+TCP FIN scan
+- RST if port is closed
+- no reponce ⇒ open/dropped by firewall
+
+TCP NULL,XMAS,etc
+- NULL 
+  + no flags
+  + same responses as FIN
+- XMAS
+  + URG + PSH + FIN (Invalid combo)
+  + same responce as FIN
+- SYN/ACK
+- FIN/ACK
+- SYN/FIN/RST
+- ...
+*Every combo might not be covered by protection, and may give info*
+
+TCP state machine
+
+OS fingerprinting
+- TCP + UDP scan, send ICMP msgs
+- Look at values in responses
+- Passive
+  + Listen to legit trafic
+- Active
+  + Send TCP, IP, ICMP
+  + Send malformed msgs
+
+Tool: Nmap Security Scanner
+
+Network Mapping
+- Broadcast
+- Recive IP from whois DB
+
+After scanning targets
+- OS prob known
+- Services on machines known
+- Net structure may be known
+
+Now the attacker can
+- Test know vulns
+- Try different atks
+- Plan atk off-line
+- Find another easier target
+
+ACK storms (desynchronization atks)
+- Sit in the middle and destroy TCP connections by missmatching sequence numbers for a legit communication
+
+TCP magninfication atk
+- leverege systems that for 1 msg send back X msgs (spoof to redirect to target of atk).
+
+TCP and Small IP fragments
+- dangerous → drop allways
+- fragmentation enables security issues
+
+Zero window size vuln
+- Send pack but say that I have no space Server waits to sent untill I say that i have space
+- scale, and make the system overloaded
+
+Other atks
+- PSH + ACK
+  + Should give to application
+  + server waits for more comm
+- TCP performance algos can be atked
+  + insert 3 ACKs may make the sender go back to "fast retransmit" or "slow start" mode
+- False ICMP source quench, may slow down the sender
+- UDP may starve TCP to virtually no service
+  + DCCP (TCP aware UDP protocol)
+
+Session hijacking through TCP sequence number prediction
+- SrcIP, DestIP, DestPort known
+- SrcPort, TCP seq. needs to be figured out
+- SrcPort, guess, moste start at 1024 after boot and inc by 1 for each new connection
+- TCP seq, guess mustnt be 100% correct due to sliding window, defence: selcet rng seq for each session. Many older systems use predictable seq nums.
+
+Selecting TCP sequence num
+- Non-random numbers easy to find out
+- RDC1948
+  + OpenBSD uses a pseudo-randomness, avoid collisions within a given time period, no hash (faster)
+  + Linux recalcs secred_random_nr every 5 mins
+
+Protection against RST guessing
+- Dont accept any other than the following sequence number
+- only prevent data in close proximity to what you have recived recently (prevent data insertion)
+
+TCP-AO
+
+TCP sequence number analysis
