@@ -1,0 +1,60 @@
+Information flow
+----------------
+Covert channels
+- Termination
+- Timing
+
+Defence for timing based atks
+- Cross-copy, have non-operations that take the same time to run in each branch. Ensure that compiler doesn't optimize away the cross-copy
+
+Intentional info release
+------------------------
+How do we release secret info in a secure way?
+Syntactic "escape hatches" / delimited release sabelfeld & myers
+e ::= val | v | e op e | declassify(e,L)
+c ::= skip | v := e | c; c | if e then c else c | while e do c
+noninterference, flow from H to L allowed ⟺ H ⊂ L
+
+JSFlow
+FlowFox
+>> JiF
+Paragon
+
+JSFlow challenge
+http://chalmerslbs.bitbucket.org/jsflow/jsflowchallenge.html
+
+Security protocols
+1. A,B, from A to S
+2. Pub key certs for A & B 
+3. Session key K_ab signed by A encrypted for B
+4 data under K_ab 
+
+Denning-Sacco protocol
+1. A,B from A to S
+2. {A, KUₐ,T}_KR_s,{B, KU_b, T}_KR_s, from S to A
+3. {{K_ab, T}_KR_A}_KU_b from A to B
+4. {data,T}_K_ab from A to B
+
+Attack (MiM)
+A→C : {{K_ac,T}_KR_a}_KU_c
+C→B : {{K_ac,T}_KR_a}_KU_b
+in ↑ the intention of A was unclear; A wants to talk to C not to B
+
+Principle
+- The interpretation of the message should only depend on its content.
+
+The fix for Denning-Sacco thus is to add the id of sender and reciever in the innermost encryption-box
+
+Netscape SSL v1
+---------------
+1. A sends session key encrypted by pub key of B
+2. B asks A for verification of A's id, with a nons msg
+3. A replies to B the signed nons
+
+Attack: MiM fwd msgs, afterwards you have 2 convos with the same session key, A talks to the attacker, B thinks he talks to A but its actually the attacker.
+
+The fix: Include the id's of the conversation with the nons on the way back from A to B, then the attacker cannot insert his id when forwarding to B since a signed the nons with his priv key.
+
+Principle
+- Identity is important to mention explicitly in messages
+
