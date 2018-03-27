@@ -1,0 +1,52 @@
+DoS
+- Bandwidth exhaustion
+  + Flooding atks
+  + Magnification atks
+    - Smurf 
+	  * Spoof victims IP
+      * ICMP echo to a broadcast addr
+      * Should be filtered in firewall, ingress filtering
+    - DNS
+      * Spoof victims IP
+      * Send DNS request
+      * Ask for a lot of info from DNS
+      * DNSSec may solve this issue 
+- Resource exhaustion
+  + Protocol abuse/exploits
+    * TCP SYN flood atk
+      + fills up connections table
+      + protection
+      	- freeing pending connections if needed
+      	- allocate micro records for each connection request
+      	- SYN cookies
+      	  * choose ISN as a hash(src IP, port, Dest IP, port, client ISN, secret)
+      	  * never store anything initially, until ACK is sent back and hash is checked
+      	  * cannot include TCP options
+  + Application exploits
+- Trigger implementation bugs
+  + Protocol exploits
+  + Application specific problems
+
+DDoS atks through Handlers and Zombies
+- Botnet in layers, Attacker sends the atk cmd to the handlers who propagates the cmd down though the botnet to the zombies who in the end send the atk pcks to the victim
+- Reflector (washes the atk to make it more hard to track)
+- Examples
+  + Trin00
+  + TFN
+- Protection
+  + The WatchGuard firewall
+  + Dectection of DDoS atks (academic)
+  + Source tracing DDoS (research area)
+  + Defense
+    - Ingress filtering
+    - Egress filtering
+    - DNS sinkholes
+    > Akamai 
+
+Firewalls
+- Can filter
+  + Malformed and illegal pcks
+  + Traffic with unwanted pattern
+- Can not filter
+  + well formed pcks with legitimate/wanted requests
+  + on what's in the pck and what the intentions of the pck is
