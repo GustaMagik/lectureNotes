@@ -1,0 +1,71 @@
+Firewalls
+cost ranges for commercial from 1k€ to 100k€ or more
+
+forms - anything that can run sw goes
+
+overload - when a fw has to much to process, needs to drop pks
+
+logging - needs to be intelligent ⇒ not have 1M entries for 1M malformed pks that came in at the same time
+
+IPS = IDS + action (usually reconfiguration)
+
+levels to inspect
+- application level
+  + can filter virus/trojan/worm
+  + difficult to cover all protocols (time/money)
+- Transport and Network Level
+  + Most fw's focus on this leve
+- Data-link level
+  + usually no/little prot
+  + atkr must be close
+- Physical level
+  + unprotectable by fw
+
+Screening router fw
+- rm obvious garbage
+- ex garbage: incomming traffic with ip source "on-the-inside"
+- aliviate the main border fw
+- stateless
+
+Good achitecture
+NET → Screening → Main Boarder
+                   ↓       ↓
+                Internal  DMZ
+                  ↓↓↓
+    (each with its own internal fw)
+
+DMZ protection
+- Best is to have for ex. web-server and mail-server on separate networks behind the main border fw.
+- Ok is to have them only behind a screening router but on a separate net than what is passed through to the main boarder.
+- Bad, to have only behind screening and on the same net as the traffic that goes to the main boarder, since then infected units in the DMZ can wiretap all communication flowing through the "company".
+
+Multi-layer DMZ
+- separate DMZ into different security levels and separate them by fw's with stricter and stricter rulesets.
+
+FW history
+- 80's routers to prevent cross-conatmination between networks (segementation)
+- 90's static pkt filters (stateless) to prot own net from internet and vice versa
+- Bastion hosts,
+- 94 stateful pkt filters
+- application-level inspection, one module per protocol
+- 00, internal networks fws, built in fws (personal fws)
+
+Types of Firewalls
+- Static   Packet Filter         [OSI 3 ]
+- Dynamic  Packet Filter         [OSI 4 ]
+- Stateful Packet Inspection     [OSI 4+]
+- Circuit-level Gateways (proxy) [OSI 4 ]
+- Application level gateway (bastion host,app proxy) [OSI 7]
+- Stateful Application-level Packet Inspection [OSI 7]
+
+Proxies / Gateways
+- All headers up until Circuit or App level are removed and the data is inspected and then if ok repacked with new headers.
+
+Air-gap Firewalls
+- one way communication
+
+Ingress & Egress filters [RFC 3704]
+
+Screening router should pass all if we don't already know that it is "dangerous".
+
+Firewalking
