@@ -1,0 +1,71 @@
+Buffer overflow
+
+Stack smashing
+
+Protection
+- Type-safe languages
+  + CCured
+  + Cyclone
+  + Rust
+- Safe functions & libs
+- Static aalysis
+  + ITS4
+  + Flawfinder
+  + RATS
+  + Splint
+  + BOON
+- Run-time analysis
+  + Purify
+  + Stackguard compiler 
+  + Stack Shiedl
+  + ProPolice
+- System support
+  + Non-executable stack
+  + address obfuscation
+
+Database security
+- Encrypt connection to DB
+- Usr auth + AC
+- Protection (clearance levels)
+- Sensistive fields needs more prot than AC
+- Encryption of sensitive data
+- Secure information Retrival
+- Statistical atks
+  + analyze statistical inferences
+  + restric query languages
+  + introduce fake tuples
+  + introduce noice
+  + give approximate answers (small regions becomes included in a larger region)
+
+Privacy-violating Information Flows
+CCS'10 Jang etal
+1 Cookie stealing
+2 Location hijacking
+3 History sniffing
+4 Behaviour tracking
+
+Site r.f(x ...)
+Injection site 	at S if P inject T (Taint)
+Checking site 	at S if O block T on V
+
+1 at document cookie inject "secret"
+  at $1.x = $2 if $1.url≠"a.com" block "secret" on $2
+
+2 at $1.x if $1.url≠"a.com" inject untrusted
+  at document.location = $1 block "untrusted" on $1
+
+3 at $1.getCompStyle($2,..) if $2.isLink() inject "secret"
+  at document.send($1,$2) block "secret" on $2
+- of the 50000 web sites scanned (top alexa) 
+  485 inspect stule properties
+  63  transfer browser history to the network
+  22  history sniffing by interclick.com
+  14  meaningtool
+  1   implicit flows (masking?)
+
+4 at $1.isMouseOver() inject "secret"
+  at $1.isClick() inject "secret"
+  at $1.isScroll() inject "secret"
+  at document.send($1,$2) "block secret" on $2
+- of 1300 web sites scanned 328 sends sensitive info on network
+	tynt.com collects text copied to clipboard
