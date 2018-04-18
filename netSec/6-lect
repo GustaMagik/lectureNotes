@@ -1,0 +1,56 @@
+Stateful packet inspection
+- Record: state, interface number, TCP seq. no, window size, etc. Accept only appropriate packages for the communication to pass.
+- UDP: Store the timeout value.
+- Communication
+  1 Consult connection (state) table
+  2 If not found, check the rule table (ACL list)
+  3 If all ok, pass the packet and add an entry to the connection table
+- Rules table is read (usually) top down, and the last rule in the main border fw should allways be drop all.
+- Each application-level protocol to be inspected requires a module
+- FTP is tricky for firewalls without knowledge due to the application specific behaviour (allocating an empty port that the other party can connect to, unannounced as far as in the ipHeader info).
+- Can be cheap (regular PC)
+
+"Next Gen" FW (application aware)
+
+Clutering firewalls for redundancy
+- needs to share state
+- private network connection that can broadcast the master fw's msg "im up and running, shut up and let me do the work". When the master fw stops sending the msg the secondary starts taking over all the work.
+
+Clustring firewalls for load sharing
+- 2 + x units
+- 2 units (incoming, outgoing) splits the load to the x different fw's that share the load.
+
+Clustering for redundancy and load sharing
+- It's complicated, but basically:
+  + redundancy in each level
+  + keep an eye for when certain links goes down and take the appropriate actions (difficult part)
+
+IPv6 firewall dilemma
+- IPv6to4 tunneling protocols, becomes a Matryoshka doll 
+- other tunneling protocols exists to, they bring the same problems.
+
+Network Address Translation
+- Can act as a fw by blocking traffic from the outside
+- Problematic to hide if the protocol needs to send info like TCP source and dest addresses and ports. Info needs to be changed on many layers.
+- can only access allready opened connections
+- nice combo with a stateful firewall
+- NAT gateways needs to reassemble IP fragments before fwding.
+- Problem with protocols that rely on the client IP address
+- Never have services rely on the client IP address (see NAT)
+
+Host-Based firewalls
+Win XP
+- Stateful inspection
+- Ingress
+Win 10
+- Quite good FW
+Win FW
+- Domain profile
+- Location based profiles
+- Rules
+- Program specific ruleset
+- Interface specific ruleset
+
+Centralized FW management systems
+- Expensive
+
